@@ -69,10 +69,10 @@ $topics = $pdo->query("SELECT id, name FROM topics ORDER BY id")->fetchAll(PDO::
                 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
                 <!-- メニューリスト -->
                 <ul class="menu-list">
-                    <li><a href="#" class="record"><img src="../assets/img/S__43532304_0.jpg" alt="記録アイコン">記録する</a></li>
-                    <li><a href="#" class="mypage"><img src="../assets/img/アカウントのアイコン2.png" alt="マイページアイコン">マイページ</a></li>
-                    <li><a href="#" class="usage"><img src="../assets/img/S__43532302_0.jpg" alt="使い方アイコン">使い方</a></li>
-                    <li><a href="#" class="logout"><img src="../assets/img/logout.png" alt="ログアウト">ログアウト</a></li>
+                    <li><a href="./create_post.php" class="record"><img src="../assets/img/S__43532304_0.jpg" alt="記録アイコン">記録する</a></li>
+                    <li><a href="../mypage/my_page.php" class="mypage"><img src="../assets/img/アカウントのアイコン2.png" alt="マイページアイコン">マイページ</a></li>
+                    <li><a href="../howto.html" class="usage"><img src="../assets/img/S__43532302_0.jpg" alt="使い方アイコン">使い方</a></li>
+                    <li><a href="../auth/logout.php" class="logout"><img src="../assets/img/logout.png" alt="ログアウト">ログアウト</a></li>
                 </ul>
             </div>
         </nav>
