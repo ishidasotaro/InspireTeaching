@@ -1,0 +1,844 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ベーススタイル（モバイル） */
+body {
+    margin: 0;
+    background: #e0f2fe;
+    color: #0c4a6e;
+    font-family: "Nunito", "Noto Sans JP", system-ui, sans-serif;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Header - モバイル対応 */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #e0f2fe;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    padding: 0 20px; /* ヘッダー内の余白 */
+}
+
+/* ロゴのサイズ調整 */
+.logo-IT {
+    width: 90px;
+    height: auto;
+    margin-top: 10px;
+    background-color: transparent; /* ロゴが上に寄りすぎないように調整 */
+}
+
+/* メニューの設定 */
+.menu-container {
+    position: relative;
+}
+
+/* メニューリストを右上に横並びに配置 */
+.menu-list {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; /* メニューアイテムを右寄せ */
+    align-items: center; /* アイテムを垂直中央に配置 */
+    padding: 0;
+    margin: 0;
+    gap: 20px; /* アイテム間の間隔 */
+    background-color: transparent; /* メニュー全体の背景色を削除（透明） */
+    position: fixed; /* メニューを右上に固定 */
+    top: 0;
+    right: 0;
+    z-index: 5;
+    width: auto; /* メニューの幅を自動調整 */
+}
+
+/* メニューアイテム（li）のスタイル */
+.menu-list li {
+    display: inline-block;
+    list-style: none;
+}
+.record .mypage .usage .logout {
+    width: 320px;
+}
+
+.menu-list li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    font-size: 14px; /* テキストサイズを調整 */
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    width: 120px; /* アイテムの幅を調整 */
+    text-decoration: none;
+    background-color: transparent; /* 各アイテムの背景色を透明にする */
+    list-style: none;
+}
+
+/* ホバー時のエフェクト */
+.menu-list li a:hover {
+    background-color: #f0f0f0; /* ホバー時に背景色を薄い灰色に変更 */
+    color: #333; /* 色も変更 */
+    transform: translateY(-2px);
+}
+
+/* メニューアイコンのスタイル */
+.menu-list li a img {
+    width: 24px; /* アイコン画像のサイズ */
+    height: 24px;
+    margin-bottom: 4px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* ハンバーガーメニューのボタン */
+.menu-toggle {
+    color: rgb(17, 17, 17);
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* メニューが開いたとき */
+.menu-list.active {
+    display: block; /* メニューを表示 */
+}
+
+/* PC版ではハンバーガーメニューを非表示 */
+@media screen and (min-width: 769px) {
+    /* メニューアイテムを右上に配置 */
+    .menu-list {
+        display: flex;
+        justify-content: flex-end; /* 右端に寄せる */
+    }
+
+    /* メニューのアイテム間隔調整 */
+    .menu-list li a {
+        font-size: 16px; /* PC版の文字サイズ調整 */
+    }
+
+    /* ハンバーガーメニューはPC版では非表示 */
+    .menu-toggle {
+        display: none;
+    }
+}
+
+/* スマホ版のレスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    .menu-container {
+        position: absolute;
+        right: 60px;
+        top: 10px;
+    }
+
+    /* メニューリストはデフォルトで隠し、クリックで表示 */
+    .menu-list {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0; /* 背景を透明にする */
+        width: 100%;
+    }
+
+    .menu-toggle {
+        font-size: 30px; /* ハンバーガーアイコンのサイズを大きく */
+    }
+
+    .headermenu.active {
+        display: block; /* メニューが開いたとき */
+    }
+
+    .header {
+        padding: 10px;
+    }
+}
+.lan {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.timeline {
+    padding-left: 10px;
+    color: #2196f3;
+    font-size: 18px;
+    margin: 0;
+}
+
+.pagehead {
+    background: #f0f9ff;
+    border-bottom: 1px solid #bae6fd;
+}
+
+.pagehead .container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.pagehead .title {
+    margin: 0;
+    font-weight: 900;
+    font-size: 20px;
+    color: #0284c7;
+}
+
+.pagehead .sub {
+    margin: 0;
+    color: #075985;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.pagehead .breadcrumb {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #075985;
+}
+
+.pagehead .breadcrumb a {
+    color: #0284c7;
+}
+
+.toolbar {
+    border-bottom: 1px solid #bae6fd;
+    background: #f0f9ff;
+    padding: 8px 0;
+}
+
+.toolbar .bar {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-user_group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.input-user_group label {
+    font-weight: 700;
+    font-size: 13px;
+    color: #075985;
+}
+
+.input,
+select {
+    height: 44px;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    padding: 0 14px;
+    background: #fff;
+    color: #0c4a6e;
+    width: 100%;
+    font-size: 16px;
+}
+#topic {
+    display: none;
+}
+.submit {
+    height: 44px;
+    background: #0284c7;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+    width: 100%;
+    padding: 0 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    display: none;
+}
+
+.wrap {
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+}
+
+.masonry {
+    column-count: 1;
+    column-gap: 16px;
+    overflow: visible;
+}
+
+.card {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 16px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    height: auto;
+    background: #f0f9ff;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+    position: relative;
+    transition: 0.2s ease;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.thumb {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+    object-fit: cover;
+}
+
+.thumb:hover img {
+    transform: scale(1.02);
+}
+
+.thumb .caption {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.body {
+    padding: 14px;
+}
+
+.title {
+    font-weight: 900;
+    font-size: 16px;
+    margin: 0 0 6px;
+    display: block;
+    color: #0284c7;
+    line-height: 1.4;
+}
+
+.meta {
+    font-size: 13px;
+    color: #075985;
+}
+
+.foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid #bae6fd;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    border: 1px solid #bae6fd;
+    border-radius: 20px;
+    font-size: 12px;
+    background: #e0f2fe;
+    color: #0284c7;
+    font-weight: 700;
+    white-space: nowrap;
+    min-height: 32px;
+}
+
+/* Dropdown Menu - モバイル対応 */
+.dropdown {
+    margin-left: auto;
+    position: relative;
+}
+
+.no-style-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #0c4a6e;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.no-style-btn:hover {
+    color: #0284c7;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 36px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    min-width: 140px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0c4a6e;
+    text-decoration: none;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.dropdown-menu a.delete {
+    color: #dc2626;
+}
+
+.dropdown-menu a.delete:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Modal - モバイル対応 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 74, 110, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #f0f9ff;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid #bae6fd;
+    animation: fadeIn 0.2s ease;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0284c7;
+    margin: 0 0 16px;
+    text-align: left;
+}
+
+.modal-content textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 14px;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    font-size: 16px; /* iOS zoom 防止 */
+    font-family: "Nunito", "Noto Sans JP", system-ui, sans-serif;
+    resize: vertical;
+    background: #fff;
+    color: #0c4a6e;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2);
+}
+
+.modal-content .btn {
+    background: #0284c7;
+    color: #fff;
+    font-weight: 800;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+    width: 100%;
+    font-size: 16px;
+}
+
+.modal-content .btn:hover {
+    background: #0369a1;
+    transform: translateY(-1px);
+}
+
+.close-btn {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #075985;
+    transition: color 0.2s;
+    padding: 4px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #0284c7;
+}
+
+/* To Top Button */
+.to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0284c7;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 999;
+}
+
+.to-top:hover {
+    transform: scale(1.05);
+}
+
+/* Profile関連（モバイル対応） */
+.profile {
+    max-width: 100%;
+    margin: 16px;
+    padding: 16px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    align-items: center;
+}
+.no-style-btn:hover {
+    color: #0284c7;
+}
+
+.dropdown {
+    margin-left: auto;
+    z-index: 20;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 28px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    min-width: 140px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 99999 !important;
+    /* overflow: hidden; */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0c4a6e;
+    text-decoration: none;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.dropdown-menu a.delete {
+    color: #dc2626;
+}
+.dropdown-menu a.delete:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #bae6fd;
+    background-image: url("椎橋ピース.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.profile .name {
+    font-weight: 900;
+    margin: 0 0 4px;
+    font-size: 16px;
+}
+
+.profile .bio {
+    margin: 0;
+    color: #075985;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.profile .edit-btn {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+}
+
+/* Stats */
+.stats {
+    max-width: 100%;
+    margin: 10px 16px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-weight: 800;
+    font-size: 13px;
+    flex: 1;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* タブレット対応 (768px以上) */
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .header a {
+        font-size: 11px;
+        padding: 6px 8px;
+        min-width: 50px;
+    }
+
+    .header a img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .timeline {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+
+    .pagehead .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 14px 16px;
+    }
+
+    .pagehead .title {
+        font-size: 22px;
+    }
+
+    .pagehead .sub {
+        font-size: 14px;
+    }
+
+    .toolbar .bar {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 16px;
+    }
+
+    .input-user_group {
+        flex-direction: row;
+        align-items: center;
+        width: auto;
+        gap: 8px;
+    }
+
+    .input,
+    select {
+        width: auto;
+        min-width: 140px;
+        font-size: 14px;
+    }
+
+    .submit {
+        width: auto;
+        font-size: 14px;
+        display: none;
+    }
+
+    .masonry {
+        column-count: 2;
+    }
+
+    .profile {
+        grid-template-columns: 72px 1fr auto;
+        margin: 18px auto;
+        max-width: min(1000px, 96vw);
+    }
+
+    .avatar {
+        width: 72px;
+        height: 72px;
+    }
+
+    .profile .edit-btn {
+        grid-column: auto;
+        margin-top: 0;
+    }
+
+    .stats {
+        margin: 10px auto 0;
+        max-width: min(1000px, 96vw);
+    }
+}
+
+/* PC対応 (1024px以上) */
+@media (min-width: 1024px) {
+    .header a {
+        font-size: 12px;
+        padding: 8px 12px;
+        min-width: 60px;
+    }
+
+    .header a img {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .headermenu {
+        gap: 15px;
+    }
+
+    .timeline {
+        font-size: 22px;
+        padding-left: 30px;
+    }
+
+    .wrap {
+        padding: 20px;
+    }
+
+    .masonry {
+        column-count: 3;
+    }
+
+    .modal-content {
+        max-width: 480px;
+        padding: 24px;
+    }
+
+    .modal-content textarea {
+        font-size: 14px;
+    }
+
+    .modal-content .btn {
+        width: auto;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+}
+
+/* 大型PC対応 (1400px以上) */
+@media (min-width: 1400px) {
+    .pagehead .container,
+    .toolbar .bar {
+        max-width: min(1600px, 98vw);
+    }
+
+    .masonry {
+        column-count: 4;
+    }
+}

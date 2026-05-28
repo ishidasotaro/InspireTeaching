@@ -1,0 +1,23 @@
+# Docker
+.env
+
+# PHP
+src/vendor/
+src/composer.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
