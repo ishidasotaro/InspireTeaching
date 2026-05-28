@@ -38,7 +38,7 @@ $posts_sql = "SELECT p.*, t.name AS topic_name, COUNT(r.id) AS reaction_count
               LEFT JOIN topics t ON p.topic_id = t.id
               LEFT JOIN reactions r ON p.id = r.post_id
               WHERE p.user_id = :user_id
-              user_group BY p.id
+              group BY p.id
               ORDER BY p.created_at DESC";
 $posts_stmt = $pdo->prepare($posts_sql);
 $posts_stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
@@ -131,7 +131,7 @@ $posts = $posts_stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="post-grid">
             <?php if ($posts && count($posts) > 0): ?>
                 <?php foreach ($posts as $post): ?>
-                    <a href="../interaction/post_detail.php?id=<?php echo htmlspecialchars($post['id']); ?>&from=mypage" class="block">
+                    <a href="../interaction/post_detail.php?id=<?php echo htmlspecialchars($post['id']); ?>&amp ;from=mypage" class="block">
                         <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-200 flex flex-col">
                             <!-- 写真 -->
                             <?php if (!empty($post['photo_path'])): ?>
