@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "db";
 $username = "root"; // MySQLのユーザー名
 $password = "root"; // MySQLのパスワード
 $dbname = "hackathon"; // 作成したデータベース名

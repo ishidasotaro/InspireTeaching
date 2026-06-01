@@ -60,4 +60,4 @@ INSERT INTO topics (name) VALUES
 ('Git');
 
 INSERT INTO users (name, email, password, user_group) VALUES
-('Alice', 'alice@example.com', 'password123', 'user_group_1');
+('Alice','alice@example.com','$2y$10$Zr6vb7eGG4V9cqn6SdBf7.iJ/fKBGVHNCOHhkFZZxRBDDNB/73KvW', 'user_group_1');
