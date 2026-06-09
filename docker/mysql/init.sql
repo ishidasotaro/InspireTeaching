@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS hackathon;
 USE hackathon;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -11,12 +11,12 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE topics (
+CREATE TABLE IF NOT EXISTS topics (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE posts (
+CREATE TABLE IF NOT EXISTS posts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE posts (
     FOREIGN KEY (topic_id) REFERENCES topics(id) ON DELETE CASCADE
 );
 
-CREATE TABLE comments (
+CREATE TABLE IF NOT EXISTS comments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     post_id INT NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE comments (
     FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
 );
 
-CREATE TABLE reactions (
+CREATE TABLE IF NOT EXISTS reactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     post_id INT NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE reactions (
 );
 
 -- 初期データ
-INSERT INTO topics (name) VALUES
+INSERT IGNORE INTO topics (name) VALUES
 ('HTML'),
 ('CSS'),
 ('JavaScript'),
@@ -59,5 +59,5 @@ INSERT INTO topics (name) VALUES
 ('React'),
 ('Git');
 
-INSERT INTO users (name, email, password, user_group) VALUES
+INSERT IGNORE INTO users (name, email, password, user_group) VALUES
 ('Alice','alice@example.com','$2y$10$Zr6vb7eGG4V9cqn6SdBf7.iJ/fKBGVHNCOHhkFZZxRBDDNB/73KvW', 'user_group_1');
