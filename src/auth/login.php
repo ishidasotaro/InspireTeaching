@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // SQL命令の準備
     $stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+
     $stmt->bindValue(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -27,14 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // パスワードの検証
     if (password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user["id"];
+        $_SESSION['user_group'] = $user['user_group'];
         header('Location: ../project/dashboard.php');
         exit;
     } else {
         echo 'メールアドレスまたはパスワードが正しくありません。';
     }
+    //user_groupが存在する場合はセッションに保存
+    
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="ja">

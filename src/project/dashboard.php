@@ -12,6 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 $topic_id = $_GET['topic_id'] ?? null;
 $sort_order = $_GET['sort'] ?? 'new';
+$user_group = $_SESSION['user_group'] ?? null;
 
 // 投稿一覧SQL
 $sql = "SELECT p.id, p.user_id, p.title, p.content, p.photo_path, p.topic_id, p.created_at,
@@ -24,8 +25,22 @@ $sql = "SELECT p.id, p.user_id, p.title, p.content, p.photo_path, p.topic_id, p.
         LEFT JOIN topics t ON p.topic_id = t.id
         LEFT JOIN reactions r ON p.id = r.post_id";
 
+        // 条件式を格納する配列
+$where_clauses = [];
+
+// 1. ログインユーザーと同じグループの投稿に限定する（基本条件）
+if ($user_group) {
+    $where_clauses[] = "u.user_group = :user_group"; // usersテーブル、またはpostsテーブルのgroup_id
+}
+
+// 2. もしトピックの選択（ITやHTMLなど）があれば、それも条件に加える
 if ($topic_id) {
-  $sql .= " WHERE p.topic_id = :topic_id";
+    $where_clauses[] = "p.topic_id = :topic_id";
+}
+
+// 条件があれば WHERE 句としてSQLに結合する
+if (!empty($where_clauses)) {
+    $sql .= " WHERE " . implode(" AND ", $where_clauses);
 }
 
 $sql .= " GROUP BY p.id, p.user_id, p.title, p.content, p.photo_path, p.topic_id, p.created_at, u.name, t.name";
@@ -42,6 +57,9 @@ $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 if ($topic_id) {
   $stmt->bindValue(':topic_id', $topic_id, PDO::PARAM_INT);
+}
+if ($user_group) {
+  $stmt->bindValue(':user_group', $user_group, PDO::PARAM_STR);
 }
 $stmt->execute();
 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
