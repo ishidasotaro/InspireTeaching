@@ -8,13 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim($_POST['email']);
   $password = trim($_POST['password']);
   $username = trim($_POST['username']);
+  $user_group = trim($_POST['user_group']);
 
   // エラーメッセージを格納する配列
   $errors = [];
 
   // バリデーション: 全てのフィールドが入力されているかチェック
-  if (empty($email) || empty($password) || empty($username)) {
-    $errors[] = "メール、ユーザー名、パスワードをすべて入力してください。";
+  if (empty($email) || empty($password) || empty($username) || empty($user_group)) {
+    $errors[] = "メール、ユーザー名、パスワード、グループをすべて入力してください。";
   }
 
   // バリデーション: 正しいメール形式かチェック
@@ -40,11 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $errors[] = "このメールアドレスは既に登録されています。";
     } else {
       // SQL命令を準備
-      $stmt = $pdo->prepare('INSERT INTO users(email, password, name) VALUES(:email, :password, :name)');
+      $stmt = $pdo->prepare('INSERT INTO users(email, password, name, user_group) VALUES(:email, :password, :name, :user_group)');
       // 値をバインド
       $stmt->bindValue(':email', $email, PDO::PARAM_STR);
       $stmt->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
       $stmt->bindValue(':name', $username, PDO::PARAM_STR);
+      $stmt->bindValue(':user_group', $user_group, PDO::PARAM_STR);
 
       // SQL命令を実行
       if ($stmt->execute()) {
@@ -65,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新規登録 - Teach & Learn</title>
+  <title>新規登録 - InspireTeaching</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
