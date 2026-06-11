@@ -143,7 +143,7 @@ $topics = $pdo->query("SELECT id, name FROM topics ORDER BY id")->fetchAll(PDO::
                 <?php echo htmlspecialchars($post['title']); ?>
               </a>
               <div class="meta">
-                <!-- <?php echo htmlspecialchars($post['user_name']); ?>・ -->
+                <?php echo htmlspecialchars($post['user_name']); ?>
                 <?php echo date('Y/m/d', strtotime($post['created_at'])); ?>
               </div>
             </div>
